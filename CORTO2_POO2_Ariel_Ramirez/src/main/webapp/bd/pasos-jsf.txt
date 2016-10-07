@@ -1,0 +1,34 @@
+JSF: JAVA SERVER FACES. Dibujar vistas dibujar paginas. Se integra con JQuery
+Sistema de usuarios, sesiones, a que va a dirigir las paginas, tiempo de sesion.Como interactuan las paginas Todo eso se configura en webl.xml
+
+
+1. Crear el web.xml
+	1.1 click derecho sobre el proyecto+
+	1.2 otro 
+	1.3 en filtro web.xml, crear
+	1.4 en la secci{on del servlet esta el nombre del servlet, puede ser cualquiera. Ah{i esta configurando un servidor 		que va a estar configurando la pagina
+	1.5 El segundo nodo, lo que se hace es mandar a llamar el server de arriba y decirle que va a utilizar un 		subdominio o subcarpeta por ejemplo /poo/*
+	1.6 tiempo de sesion 30 minutos
+	1.7 lista de archivos de bienvenidad, ahí va a arrancar con el index, se puede congiruar otras paginas
+2. click drrecho sobre web pages, otro, xhtml, siguiente, nombre, index.xhtml
+	2.1  inclur libreria jsf html y solo tener codigo html normal
+	2.2  realizar clean install y correr el proyecto
+	2.3 correr el proyectoooo
+3. aagregar tas(librerias)
+4. crear Manage Bean MB. 
+	4.1  En controlador click derecho nuevo, JSF Managed Bean
+	4.2 siguiente, nombre de la clase. nombre de la clase (plantilla)ModeloBean 
+	4.3 name -> nombre del objeto
+	4.4 scope o alcance (aparecen 7, solo 4 ha ocupado el profe xD aplication,session, rquest  y view) (request recarga la pagina y view hace que los datos se recarguen mientras vemos la pagina o algo asíxd)
+	4.5 seleccionar ambito de request y terminar
+5. ahora vamos amarrar la pagina xhtml y el bean
+	5.1 primero crear un atributo(privae Alumnos objeAlum) del modelo para que el estemos creando el bean y lo 		encapsulamos
+	5.2 cREAR UN MEtodo publico llamado init y arribita de ese metodo poder una notación @PostConstruct //despues de 		iniciar la vista, cuando la vista se despliegue ejecuta eso 
+	5.3 dentro de ese metodo instanciar 
+
+
+
+
+para crear los EJB
+1.  click derecho sobre el paquete nuevo crear una sesión a partir de una entidad, chequeamos local siguiente
+2. para llamarlo dlick derehco isnertar codigo call session bean
