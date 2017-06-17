@@ -1,0 +1,43 @@
+Pasos para JPA 
+1. Agregar la depedencia
+2. copiar el driver de la base de datos en glassfish 4.1
+3. Reiniciar o iniciar el servidor
+4. Entrar en la consola del servidor(view domain console)
+5. Crear un pool de conexiones (JDBC->JDBC connections pools->new)
+	5.1  Poner nombre al pool (Comienze con mayuscula y al final poner pool (PooPool))
+ 	5.2 Resorce type jaca.sqlConnectionPoolDataSource
+	5.3 Database drivers vendor mysql
+	5.4 Lo demas dejarlo así
+	5.5 darle next 
+	5.6 Ver propiedades adicionales(una tabla mas abajo)
+	5.7 Eliminar todas EXEPTO URL(si no esta hay que crearla),User,Password
+	5.7.1 SI no esta le damos a add property. En name ponemos URL en mayusculas,en value le ponemos jdbc:mysql://localhost:3306/nombrebasedatos, usuario es root y password la password xddd. Luego finish
+	5.8 Luego en JDC connection aparecera nuestra pool
+	5.9 Entramos y podemos darle ping(Saldra ping exitoso y si no saldra instalando. Si pool da error no seguir programando xdd)
+6.Crear un  recurso JDBC, no se puede llamar directamente el pool., se debe hacer atraves de un recurso; nos vamos  a JDBC-> JDBC resoruces-> new-> el nombre siempre llevara esta estructura -> jdbc/Nombrepool en Pool name pondremos el pool que acabamos de crear (por defecto esta habilitado) y le damos OK
+	6.1 Reiniciar el servidor
+7.Crear la unidad de persistencia (el equivalente para entender sería como el pom) click derecho en el proyecto->otro->persistencia o persistence->Unidad de persistencia-> Nombre puede ser cualquier nommbre, pero podr{iamos ponerle PooPU (Persistence Unid); proveedor de persistencia -> EclipseLink; fuente datos -> el recurso que creamos; cheuqeuear utilice Apis de java transaction; entegra de generacion de tablas -> ninguno-> terminar; Cuando termine se tiene que creear resource-> meta INF-> persistence y ah{i estara el nombre del pool
+	7.1 Por si no aparece nuestro recurso verificar que en propiedades del proyecto->run->este el servidor donde creamos el pool	(es decir glashfish 4.1)
+
+********************************************************************************
+*Todo lo de arriba fue para hacer la conexion a traves de un pool de conexiones*
+********************************************************************************
+
+version de driver mysql n: 5.0.8
+
+
+
+*********************************
+Crear el modelo
+*********************************
+1.En el paquete donde crearemos el modelo click derecho agregar, otros, persistencia, Una clase entidad a partir de base de datos
+2.Fuente de datos o data source escogemos nuestro pool
+	2.1 Si no funciona, damos a nuevo origen de datos nombre, algun nombre
+	2.1.1 En la conexion creamos una nueva conexion, escogemos my sql-> add, nos pedira ubicar el driver de mysql, lo escogemos, 		luego, seleccionamos el nuevo registro que se creo y damos next, especificaremos credenciales de la base, luego 		escogeremos un nombre para la conexion, la que nosotros queramos
+	2.2 Damos ok ok ok a todo
+3. Escogemos las tablas a las que le deseamos hacer el modelo
+4.Dejamos todo como esta y next
+5.Fetch: Lazy ; Type: List
+6. Luego, en las opciones que tienen un cheque dejamos Si--NO--SI--NO--SI
+7. Terminar
+
